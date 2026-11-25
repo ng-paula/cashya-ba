@@ -1,0 +1,147 @@
+/* ==========================================================
+   Expenses — list with search/filter + add form
+   Desktop: form on the left (sticky). Phone: form opens from the "Add" button.
+   ========================================================== */
+
+.exp-layout {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+/* The "Add" toggle is only needed on small screens */
+.exp-add-toggle {
+  display: none;
+}
+
+/* ---------- Form ---------- */
+.exp-form {
+  position: sticky;
+  top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.exp-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.exp-form__hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.exp-form__hint .link-btn {
+  padding: 0;
+  font-size: inherit;
+}
+
+/* ---------- List ---------- */
+.exp-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 180px;
+  gap: 8px;
+}
+.exp-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-alt);
+  color: var(--text-faint);
+}
+.exp-search:focus-within {
+  border-color: var(--book-green);
+}
+.exp-search input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+}
+.exp-filter {
+  padding: 10px 12px;
+}
+.exp-total {
+  margin: 12px 0 4px;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+.exp-total strong {
+  color: var(--text);
+}
+
+.exp-group {
+  margin-top: 12px;
+}
+.exp-group__head {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: var(--surface-alt);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+.exp-del {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-faint);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease, background 0.15s ease, color 0.15s ease;
+  flex-shrink: 0;
+}
+.tx-list li:hover .exp-del,
+.exp-del:focus-visible {
+  opacity: 1;
+}
+.exp-del:hover {
+  background: var(--red-soft);
+  color: var(--red);
+}
+.exp-empty {
+  padding: 40px 0;
+  text-align: center;
+}
+
+/* Touch screens can't hover: always show delete */
+@media (hover: none) {
+  .exp-del {
+    opacity: 1;
+  }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .exp-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .exp-add-toggle {
+    display: inline-flex;
+  }
+  .exp-form {
+    position: static;
+    display: none;
+  }
+  .exp-form.is-open {
+    display: flex;
+  }
+}
+@media (max-width: 480px) {
+  .exp-toolbar {
+    grid-template-columns: minmax(0, 1fr) 150px;
+  }
+}

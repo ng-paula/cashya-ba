@@ -1,0 +1,243 @@
+/* ==========================================================
+   Settings — profile/RBAC, budget, alerts, household, privacy
+   ========================================================== */
+
+.set-grid {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.set-profile {
+  position: sticky;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+.set-profile__avatar {
+  width: 64px;
+  height: 64px;
+  font-size: 1.3rem;
+}
+.set-profile__role {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.set-profile__role small {
+  font-weight: 400;
+  font-size: 0.76rem;
+  color: var(--text-faint);
+}
+.set-profile__role {
+  width: 100%;
+  margin: 12px 0 4px;
+  text-align: left;
+}
+
+.set-profile__note {
+  font-size: 0.78rem;
+}
+
+.set-inline {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0 12px;
+}
+.set-inline .input {
+  flex: 1;
+  min-width: 0;
+}
+
+.set-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.set-budget {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+}
+.set-budget div {
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-alt);
+}
+.set-budget dt {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+}
+.set-budget dd {
+  margin: 2px 0 0;
+  font-weight: 700;
+}
+
+.set-channels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.channel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  text-align: left;
+  cursor: pointer;
+}
+.channel div {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+.channel small {
+  font-size: 0.78rem;
+  color: var(--text-faint);
+}
+.channel.is-on {
+  border-color: var(--book-green);
+  background: var(--mantis-soft);
+}
+.channel.is-on svg {
+  color: var(--book-green);
+}
+
+.set-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.set-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 11px 2px;
+  border-bottom: 1px solid var(--border);
+}
+.set-list li:last-child {
+  border-bottom: none;
+}
+.set-list li div {
+  display: flex;
+  flex-direction: column;
+}
+.set-list small {
+  font-size: 0.8rem;
+  color: var(--text-faint);
+}
+
+.set-household {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.set-household h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.set-household p {
+  font-size: 0.88rem;
+}
+
+.set-privacy {
+  display: flex;
+  gap: 16px;
+  background: var(--midnight);
+  color: var(--praxeti-white);
+}
+.set-privacy > svg {
+  flex-shrink: 0;
+  color: var(--spring-lime);
+}
+.set-privacy h3 {
+  margin-bottom: 4px;
+}
+.set-privacy p {
+  font-size: 0.88rem;
+  opacity: 0.8;
+}
+
+@media (max-width: 980px) {
+  .set-grid {
+    grid-template-columns: 1fr;
+  }
+  .set-profile {
+    position: static;
+  }
+  .set-budget {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 520px) {
+  .set-channels {
+    grid-template-columns: 1fr;
+  }
+}
+
+.set-note {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0 12px;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+/* Change password */
+.set-sub {
+  margin-top: 2px;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+.set-password {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 4px;
+}
+.set-password__show {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.set-password__show input {
+  accent-color: var(--book-green);
+}
+.set-password__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  grid-column: 2 / -1;
+}
+.set-password + .form-ok,
+.set-password + .form-error,
+.card-header + .form-ok {
+  margin-top: 12px;
+}
+@media (max-width: 860px) {
+  .set-password {
+    grid-template-columns: 1fr;
+  }
+  .set-password__actions {
+    grid-column: auto;
+  }
+}

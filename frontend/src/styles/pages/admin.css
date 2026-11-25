@@ -1,0 +1,266 @@
+/* ==========================================================
+   Admin panel — KB management, evaluation metrics,
+   latency, guardrail log
+   ========================================================== */
+
+/* KPI row reuses .dash-kpis from dashboard.css */
+
+.admin-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.metric p {
+  font-size: 0.85rem;
+}
+.metric strong {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.metric span {
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+.metric small {
+  margin-top: 8px;
+  font-size: 0.76rem;
+  color: var(--text-faint);
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 16px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+.admin-table th {
+  padding: 10px 12px;
+  background: var(--surface-alt);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-faint);
+}
+.admin-table th:first-child {
+  border-radius: 10px 0 0 10px;
+}
+.admin-table th:last-child {
+  border-radius: 0 10px 10px 0;
+}
+.admin-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.admin-table td:first-child {
+  font-weight: 600;
+  white-space: normal;
+  min-width: 220px;
+}
+.admin-table .pill {
+  padding: 3px 10px;
+  font-size: 0.72rem;
+}
+
+/* ---------- Latency ---------- */
+.latency {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  height: 200px;
+  padding-bottom: 22px;
+}
+.latency__col {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+}
+.latency__col span {
+  width: 100%;
+  max-width: 30px;
+  border-radius: 10px 10px 6px 6px;
+  background: linear-gradient(180deg, var(--nuit-blue), #7fa3d9);
+}
+.latency__col small {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+.latency__col em {
+  position: absolute;
+  bottom: -22px;
+  font-style: normal;
+  font-size: 0.72rem;
+  color: var(--text-faint);
+}
+.latency__note {
+  margin-top: 14px;
+  font-size: 0.82rem;
+}
+
+/* ---------- Guardrail log ---------- */
+.flag-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.flag-list li {
+  display: grid;
+  grid-template-columns: 150px 1fr auto auto;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88rem;
+}
+.flag-list li:last-child {
+  border-bottom: none;
+}
+.flag-list .pill:first-child {
+  justify-self: start;
+}
+
+.metric__run {
+  margin-top: 2px !important;
+  font-size: 0.7rem !important;
+}
+.metric--empty {
+  grid-column: 1 / -1;
+}
+.metric code,
+.admin-results code {
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: var(--surface-alt);
+  font-size: 0.8rem;
+}
+
+.admin-grid--even {
+  grid-template-columns: 1fr 1fr;
+}
+
+.admin-del {
+  opacity: 1;
+}
+
+.admin-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 4px 4px 4px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  color: var(--text-faint);
+}
+.admin-search input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+}
+.admin-results {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0 0;
+  padding-left: 20px;
+  font-size: 0.85rem;
+}
+.admin-results p {
+  margin-top: 2px;
+  color: var(--text-muted);
+}
+
+.intent-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-top: 14px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.intent-list p {
+  width: 100%;
+}
+.intent-list strong {
+  color: var(--text);
+}
+.admin-note {
+  font-size: 0.8rem;
+}
+.flag-type {
+  font-size: 0.8rem;
+}
+
+.flag-list--compact li {
+  grid-template-columns: 130px 1fr auto auto;
+}
+.role-select {
+  width: auto;
+  padding: 8px 12px;
+}
+
+.admin-denied {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 60px 24px;
+  text-align: center;
+}
+.admin-denied svg {
+  color: var(--red);
+}
+
+@media (max-width: 1280px) {
+  .admin-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 980px) {
+  .admin-grid,
+  .admin-grid--even {
+    grid-template-columns: 1fr;
+  }
+  .flag-list--compact li {
+    grid-template-columns: 1fr auto;
+  }
+  .flag-list li {
+    grid-template-columns: 1fr auto;
+  }
+  .flag-list li p {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 520px) {
+  .admin-metrics {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .metric strong {
+    font-size: 1.5rem;
+  }
+}

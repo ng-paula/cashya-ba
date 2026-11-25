@@ -1,0 +1,38 @@
+{
+  "runAt": "2026-11-23T23:01",
+  "mode": "rules",
+  "model": "rules",
+  "categorization": {
+    "accuracy": 0.983,
+    "correct": 59,
+    "total": 60,
+    "mistakes": [
+      {
+        "text": "jeep papasok at pauwi 52",
+        "expected": "transport",
+        "got": "others"
+      }
+    ]
+  },
+  "retrieval": {
+    "hitAt3": 1.0,
+    "mrr": 1.0,
+    "total": 18
+  },
+  "outOfScope": {
+    "rejected": 4,
+    "total": 4
+  },
+  "guardrails": {
+    "attacksCaught": 12,
+    "attacksTotal": 12,
+    "benignAllowed": 8,
+    "benignTotal": 8,
+    "piiMasked": 4,
+    "piiTotal": 4
+  },
+  "latency": {
+    "avgMs": 0.1,
+    "p95Ms": 0.0
+  }
+}

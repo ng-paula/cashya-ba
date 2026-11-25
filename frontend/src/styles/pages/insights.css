@@ -1,0 +1,205 @@
+/* ==========================================================
+   Insights — donut, daily trend, AI insight cards
+   ========================================================== */
+
+.ins-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+}
+
+/* ---------- Donut ---------- */
+.ins-donut__body {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.donut {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.donut__hole {
+  position: absolute;
+  inset: 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--surface);
+  text-align: center;
+}
+.donut__hole small {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+}
+.donut__hole strong {
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.ins-legend {
+  flex: 1;
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.88rem;
+}
+.ins-legend li {
+  display: grid;
+  grid-template-columns: 12px 1fr auto 40px;
+  align-items: center;
+  gap: 10px;
+}
+.ins-legend i {
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+}
+.ins-legend em {
+  font-style: normal;
+  text-align: right;
+  color: var(--text-faint);
+}
+
+/* ---------- Trend ---------- */
+.trend {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 190px;
+  padding-bottom: 22px;
+}
+.trend__col {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.trend__bar {
+  width: 100%;
+  max-width: 34px;
+  border-radius: 10px 10px 6px 6px;
+  background: var(--mantis);
+  transition: height 0.4s ease;
+}
+.trend__bar.is-over {
+  background: var(--amber);
+}
+.trend__col em {
+  position: absolute;
+  bottom: -22px;
+  font-style: normal;
+  font-size: 0.72rem;
+  color: var(--text-faint);
+}
+/* Plot area = chart height minus the 22px day-label strip */
+.trend__plan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(22px + (100% - 22px) * var(--plan, 0));
+  z-index: 1;
+  border-top: 2px dashed var(--nuit-blue);
+  pointer-events: none;
+}
+.trend__empty {
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  transform: translateX(-50%);
+  font-size: 0.84rem;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+/* ---------- Insight cards ---------- */
+.ins-plan {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.ins-plan i {
+  width: 16px;
+  border-top: 2px dashed var(--nuit-blue);
+}
+.ins-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.ins-card {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  column-gap: 12px;
+  align-items: start;
+}
+.ins-card h3 {
+  margin-bottom: 4px;
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+.ins-card p {
+  grid-column: 2;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.ins-card__icon {
+  grid-row: span 2;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+.ins-card--green .ins-card__icon {
+  background: var(--mantis-soft);
+  color: var(--book-green);
+}
+.ins-card--amber .ins-card__icon {
+  background: var(--amber-soft);
+  color: #9a5b00;
+}
+.ins-card--lime {
+  background: var(--spring-lime);
+}
+.ins-card--lime p {
+  color: #3d4a1a;
+}
+.ins-card--lime .ins-card__icon {
+  background: rgba(255, 255, 255, 0.7);
+}
+.ins-card--blue .ins-card__icon {
+  background: var(--blue-soft);
+  color: var(--nuit-blue);
+}
+
+@media (max-width: 1200px) {
+  .ins-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .ins-donut__body {
+    flex-direction: column;
+  }
+  .ins-legend {
+    width: 100%;
+  }
+  .ins-cards {
+    grid-template-columns: 1fr;
+  }
+  .trend {
+    gap: 4px;
+  }
+}

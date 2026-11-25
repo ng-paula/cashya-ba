@@ -1,0 +1,146 @@
+/* ==========================================================
+   Savings goals
+   ========================================================== */
+
+.goal-form {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 12px;
+}
+.goal-form__error {
+  grid-column: 1 / -1;
+}
+
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.goal {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.goal__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.goal h3 {
+  min-width: 0;
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+.goal__pct {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--book-green);
+}
+.goal__amounts {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.goal__amounts strong {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text);
+}
+.goal .progress {
+  height: 8px;
+}
+.goal .progress > span {
+  background: var(--book-green);
+}
+.goal__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+}
+.goal__foot small {
+  font-size: 0.78rem;
+  color: var(--text-faint);
+}
+
+/* Inline "Add savings" */
+.goal-deposit {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  background: var(--lime-soft);
+  animation: goal-deposit-in 0.2s ease both;
+}
+.goal-deposit label {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.goal-deposit__quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.goal-deposit__quick .chip {
+  background: #fff;
+}
+.goal-deposit__row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.goal-deposit__money {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: #fff;
+}
+.goal-deposit__money:focus-within {
+  border-color: var(--midnight);
+}
+.goal-deposit__money span {
+  font-weight: 700;
+  color: var(--text-muted);
+}
+.goal-deposit__money input {
+  width: 100%;
+  min-width: 0;
+  padding: 8px 6px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+}
+@keyframes goal-deposit-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+.goal.is-done {
+  background: var(--mantis-soft);
+}
+.goal.is-done .progress {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 860px) {
+  .goal-form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .goal-form .field:first-child,
+  .goal-form .btn {
+    grid-column: 1 / -1;
+  }
+}

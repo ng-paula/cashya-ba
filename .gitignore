@@ -1,0 +1,25 @@
+# Secrets — never commit (API keys, webhook URL)
+.env
+*.env
+!.env.example
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local database + vector store (recreated on start)
+backend/data/
+
+# Node / build
+node_modules/
+dist/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
